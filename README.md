@@ -11,6 +11,8 @@ Unity / VRChat ツール開発で使う共通情報源をまとめる専用 repo
   - Unity / VRChat ツール UI 方針
 - `PUBLIC_RELEASE_GUIDELINES.md`
   - GitHub Release / VPM / VCC / BOOTH の公開運用
+- `REPO_INDEX.md`
+  - よく使う repo の入口メモ
 
 ## 置かないもの
 - 各 repo 固有の前提
