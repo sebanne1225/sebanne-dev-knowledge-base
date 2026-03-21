@@ -67,6 +67,7 @@ VCC に追加する URL と、listing 閲覧ページは役割を分けます。
 - `index.json` は VCC に追加するための URL
 - listing page は閲覧用ページ
 - README、BOOTH_PACKAGE、BOOTH 商品説明文ではこの役割を混ぜない
+- listing page を参考ページとして併記する場合も、VCC に追加する URL ではないと分かる形で書く
 - GitHub の listing repo URL は主導線にしない
 
 ---
