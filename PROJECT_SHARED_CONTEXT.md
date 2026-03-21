@@ -10,6 +10,7 @@ ChatGPT はこの前提をもとに、状況整理、設計、切り分け、Cod
 - `CODEX_PROMPT_BANK.md`: 再利用する定型プロンプト
 - `UNITY_VRCHAT_TOOL_UI_GUIDELINES.md`: Unity / VRChat ツール UI 方針
 - `PUBLIC_RELEASE_GUIDELINES.md`: GitHub Release / VPM / VCC / BOOTH の公開運用
+- `REPO_INDEX.md`: よく使う repo の入口一覧
 - 各 repo の `CODEX_HANDOFF.md`: repo 固有の前提、次回再開用の要点、今回だけの差分
 
 情報源は増やしすぎず、「共通前提」と「再利用する定型」に寄せることを標準運用とします。
@@ -144,6 +145,8 @@ ToolDevWorkspace/
 - 削除対象は、重複している内容、別の情報源へ統合済みの内容、単発の不具合ログ、一時メモ、今後ほぼ参照しない内容
 - 情報源は増やしすぎず、「共通前提」と「再利用する定型」に絞る
 - UI 方針は `UNITY_VRCHAT_TOOL_UI_GUIDELINES.md`、公開運用は `PUBLIC_RELEASE_GUIDELINES.md` に寄せ、このファイルへ重複して持ち込まない
+- repo の入口整理は `REPO_INDEX.md`、repo ごとの今回だけの条件は各 repo の `CODEX_HANDOFF.md` に寄せる
+- `REPO_INDEX.md` には、今後も繰り返し参照する repo の入口だけを載せる
 
 ---
 

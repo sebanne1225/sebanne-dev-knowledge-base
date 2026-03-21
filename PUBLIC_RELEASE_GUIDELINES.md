@@ -45,11 +45,12 @@ version 表記は `1.0.0` のような SemVer 形式を正とし、`v` は付け
 
 ## GitHub / owner / URL
 GitHub の標準 owner / アカウント名は `sebanne1225` を前提にします。
+branch は `main` 固定ではなく、対象 repo の default branch に合わせます。
 
 ### 基本形
 - package repo: `https://github.com/sebanne1225/<repo-name>`
-- changelogUrl: `https://github.com/sebanne1225/<repo-name>/blob/main/CHANGELOG.md`
-- licensesUrl: `https://github.com/sebanne1225/<repo-name>/blob/main/LICENSE`
+- changelogUrl: `https://github.com/sebanne1225/<repo-name>/blob/<default-branch>/CHANGELOG.md`
+- licensesUrl: `https://github.com/sebanne1225/<repo-name>/blob/<default-branch>/LICENSE`
 
 ---
 
