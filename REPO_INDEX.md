@@ -29,8 +29,8 @@
 - `sebanne1225/sebanne-listing`
 - 用途:
   - VPM / VCC 向け listing 管理
-  - `source.json`
-  - Pages / `index.json`
+  - `source.json` まわりの listing metadata 管理
+  - Pages / `index.json` の VCC 導線確認
 - 見る場面:
   - 新しい package repo を listing に追加する時
   - package 公開後に listing 反映を確認する時
