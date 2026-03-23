@@ -152,6 +152,9 @@ ToolDevWorkspace/
 - UI 方針は `UNITY_VRCHAT_TOOL_UI_GUIDELINES.md`、公開運用は `PUBLIC_RELEASE_GUIDELINES.md` に寄せ、このファイルへ重複して持ち込まない
 - repo の入口整理は `REPO_INDEX.md`、repo ごとの今回だけの条件は各 repo の `CODEX_HANDOFF.md` に寄せる
 - `REPO_INDEX.md` には、今後も繰り返し参照する repo の入口だけを載せる
+- `CODEX_HANDOFF.md` は、毎回なんでも自動更新するメモではなく、節目で Codex が更新する repo 固有の現場メモとして扱う
+- 更新は plan が固まったあと、実装が一段落したあと、作業中断時、スレッド終了前などの節目だけでよく、`Current State` `Current Blocker` `Tasks` と次回再開用の短い要点 3〜5 行を中心に整理する
+- 未確認の推測、単発の試行錯誤ログ、まだ確定していない改善案の羅列は `CODEX_HANDOFF.md` に溜めすぎない
 
 ---
 
