@@ -13,6 +13,8 @@ Unity / VRChat ツール開発で使う共通情報源をまとめる専用 repo
   - GitHub Release / VPM / VCC / BOOTH の公開運用
 - `REPO_INDEX.md`
   - よく使う repo の入口一覧
+- `THREAD_CLOSEOUT_TEMPLATE.md`
+  - スレ終了時の抽出テンプレ
 - `NDMF_BUILD_PASS_SHARED.md`
   - NDMF Build Pass の薄い shared note
 - `skills/`
