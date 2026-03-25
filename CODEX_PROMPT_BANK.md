@@ -38,6 +38,25 @@ ChatGPT 側の案内例:
 
 ユーザーは、その差分を加えて Codex に渡す。
 
+### 依頼文末尾に付ける共通欄
+```text
+CODEX_HANDOFF.md の扱い:
+- update: after
+- scope: minimal
+- note:
+```
+
+使い分け:
+- `before`: handoff が古い、または現況とズレていて、実装前に現況ベースへ整えたい時
+- `after`: 今回の作業内容を反映して、節目更新したい時
+- `none`: 単発レビューや軽微修正で、handoff 更新まで不要な時
+
+scope の目安:
+- `full`: `Goal` `Current State` `Current Blocker` `Rules` `Tasks` `Definition of Done` を見直す
+- `minimal`: `Current State` `Current Blocker` `Tasks` と次回再開用メモを中心に更新する
+
+デフォルトは `update: after` と `scope: minimal` でよい。
+
 ---
 
 ## 2-1. テンプレ repo を実ツール化する
@@ -838,3 +857,15 @@ BOOTH 配布用の同梱フォルダ構成を作ってください。
 - まだ commit / push はしない
 - 実装は次の指示があるまで始めない
 ```
+
+---
+
+## 3-6. エクスプローラーコピーの短縮文
+```text
+えくこぴ
+```
+
+意味:
+- 「エクスプローラーでコピーした状態にして」と同義
+- 単なるテキストコピーではなく、Explorer で `Ctrl+V` できるファイルコピー状態を指す
+- 複数ファイルが対象なら、1 つにまとめず各ファイルを別々のファイルとしてコピー状態にする
