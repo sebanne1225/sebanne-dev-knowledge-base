@@ -85,10 +85,6 @@ def extract_release_urls(guidelines_text: str) -> tuple[str | None, str | None]:
     return index_url, listing_url
 
 
-def extract_prompt_ids(prompt_bank_text: str) -> set[str]:
-    return set(re.findall(r"^##\s+(\d-\d+[a-z]?)\.", prompt_bank_text, re.MULTILINE))
-
-
 def extract_repo_index_urls(repo_index_text: str) -> dict[str, str]:
     repo_urls: dict[str, str] = {}
     for owner, repo_name in re.findall(r"^### `([^`]+)/([^`]+)`", repo_index_text, re.MULTILINE):
@@ -223,15 +219,13 @@ def canonical_field(value: Any, source: str) -> dict[str, Any]:
 
 def load_knowledge(knowledge_root: Path) -> dict[str, Any]:
     guidelines_text = read_text(knowledge_root / "PUBLIC_RELEASE_GUIDELINES.md")
-    prompt_bank_text = read_text(knowledge_root / "CODEX_PROMPT_BANK.md")
     shared_context_text = read_text(knowledge_root / "PROJECT_SHARED_CONTEXT.md")
     repo_index_text = read_text(knowledge_root / "REPO_INDEX.md")
-    if guidelines_text is None or prompt_bank_text is None or shared_context_text is None or repo_index_text is None:
+    if guidelines_text is None or shared_context_text is None or repo_index_text is None:
         raise RuntimeError("Knowledge repo documents are incomplete for public-release-sync-check.")
     vcc_index_url, listing_page_url = extract_release_urls(guidelines_text)
     return {
         "guidelines_text": guidelines_text,
-        "prompt_ids": extract_prompt_ids(prompt_bank_text),
         "owner": extract_owner(guidelines_text),
         "repo_index_urls": extract_repo_index_urls(repo_index_text),
         "vcc_index_url": vcc_index_url,
@@ -782,74 +776,37 @@ def derive_status(issues: list[dict[str, Any]], scope_supported: bool) -> str:
     return "ok"
 
 
-def choose_prompt(prompt_ids: set[str], preferred: str | None) -> str | None:
-    if preferred and preferred in prompt_ids:
-        return preferred
-    return None
-
-
-def suggest_next_action(status: str, issues: list[dict[str, Any]], prompt_ids: set[str]) -> dict[str, Any] | None:
+def suggest_next_action(status: str, issues: list[dict[str, Any]]) -> dict[str, Any] | None:
     if status == "unsupported-input":
         return {
             "mode": "fix-input",
-            "primary_prompt_id": None,
-            "secondary_prompt_id": None,
             "reason": "Use check_scope='pre-release' for the initial implementation.",
-            "source": None,
         }
     if not issues:
         return {
             "mode": "none",
-            "primary_prompt_id": None,
-            "secondary_prompt_id": None,
-            "reason": "No follow-up prompt is needed.",
-            "source": None,
+            "reason": "No follow-up action is needed.",
         }
 
     issue_ids = {item["id"] for item in issues}
     categories = {item["category"] for item in issues}
-    secondary: str | None = None
 
     if "file-existence.booth-package.required-missing" in issue_ids:
-        primary = choose_prompt(prompt_ids, "2-11")
         reason = "BOOTH_PACKAGE is missing required handout files."
-        if "file-existence.workflow.missing" in issue_ids:
-            secondary = choose_prompt(prompt_ids, "2-10")
     elif "file-existence.workflow.missing" in issue_ids:
-        primary = choose_prompt(prompt_ids, "2-10")
         reason = "Release workflow coverage looks incomplete."
-        if categories & {"url", "metadata", "docs-role-drift"}:
-            secondary = choose_prompt(prompt_ids, "2-8b")
     elif categories == {"docs-role-drift"}:
-        primary = choose_prompt(prompt_ids, "2-8a")
         reason = "The main issues are public-facing docs tone and role drift."
     elif categories & {"url", "metadata", "docs-role-drift"}:
-        primary = choose_prompt(prompt_ids, "2-8b")
         reason = "Public-facing metadata and docs need alignment."
-        if "version" in categories:
-            secondary = choose_prompt(prompt_ids, "2-9")
     elif categories == {"version"}:
-        primary = choose_prompt(prompt_ids, "2-9")
         reason = "The main issues are release version alignment tasks."
     else:
-        primary = choose_prompt(prompt_ids, "2-8")
         reason = "A final pre-release pass is the most natural next step."
 
-    if primary is None:
-        return {
-            "mode": "none",
-            "primary_prompt_id": None,
-            "secondary_prompt_id": None,
-            "reason": "No mapped prompt-bank id was found in CODEX_PROMPT_BANK.md.",
-            "source": None,
-        }
-
     return {
-        "mode": "prompt-bank",
-        "primary_prompt_id": primary,
-        "secondary_prompt_id": secondary,
+        "mode": "suggested-action",
         "reason": reason,
-        "source": "CODEX_PROMPT_BANK.md",
     }
 
 
@@ -866,7 +823,7 @@ def build_result(
             "scope": {"requested": check_scope, "effective": None, "supported": False},
             "canonical_values": None,
             "issues": [],
-            "suggested_next_action": suggest_next_action("unsupported-input", [], knowledge["prompt_ids"]),
+            "suggested_next_action": suggest_next_action("unsupported-input", []),
         }
 
     package_json = read_json(target_repo / "package.json")
@@ -890,7 +847,7 @@ def build_result(
         "scope": {"requested": check_scope, "effective": SUPPORTED_SCOPE, "supported": True},
         "canonical_values": canonical_values,
         "issues": issues,
-        "suggested_next_action": suggest_next_action(status, issues, knowledge["prompt_ids"]),
+        "suggested_next_action": suggest_next_action(status, issues),
     }
 
 
