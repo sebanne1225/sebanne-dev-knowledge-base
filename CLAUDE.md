@@ -291,7 +291,23 @@ listing repo 以外の package repo は、機能差があっても、まず repo
 
 ---
 
-## 9. Unity AnimatorController / MA リフレクション 共通知見
+## 9. Unity ツールの OutputFolder 設計パターン
+Unity / VRChat ツールで生成物の出力先を扱う場合、
+以下の三択UIを標準パターンとして使う。
+
+- **元ソース直下**（SourceRelative）: InputFolder直下に `Generated/` を作成
+- **ツール共通フォルダ**（ToolDefault）: `Assets/Sebanne/{ToolName}/Generated/` に生成
+- **フォルダを指定**（Custom）: ユーザー指定
+
+デフォルトは **ToolDefault**。
+理由: 素材と生成物を分けたい派のユーザーに配慮するため。
+
+ToolDefault のパスは `Assets/Sebanne/{ToolName}/Generated/` を基本形にする。
+出力先フォルダが存在しない場合は `AssetDatabase.CreateFolder` で自動作成する。
+
+---
+
+## 10. Unity AnimatorController / MA リフレクション 共通知見
 - `AddState` / `AddTransition` はサブアセットを内部で自動登録する
   → `AddObjectToAsset` の二重登録は不要、エラーになる
 - `rootStateMachine` は個別に `SetDirty` が必要（controller だけでは不足）
