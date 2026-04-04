@@ -67,6 +67,14 @@
   - 非破壊 / 冪等 / Dry Run / ログ設計の参照
   - UI や README の整え方を他 repo と比較する時
 
+### `sebanne1225/flipbook-material-generator`
+- 用途:
+  - Flipbook Material Generator 本体 repo
+- 見る場面:
+  - package.json / README / CHANGELOG / Release 確認
+  - 公開準備、release、listing 反映確認
+  - UI 設計パターンの参照（5 セクション構成 / helpBox 枠 / DrawSectionHeader）
+
 ---
 
 ## repo ごとの運用メモ
