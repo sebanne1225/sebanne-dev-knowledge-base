@@ -157,6 +157,11 @@ BOOTH_PACKAGE は最小 4 点を基本形にします。
   - 未対応事項
   - `README` 誘導
 
+### BOOTH 配布 zip ファイル名
+BOOTH 配布 zip のファイル名は `{ToolName}_BOOTH_Package_v{version}.zip` を基本形にする。
+- 例: `FlipbookMaterialGenerator_BOOTH_Package_v1.0.0.zip`
+- 例: `SkinnedMeshMirror_BOOTH_Package_v0.1.2.zip`
+
 ---
 
 ## BOOTH 商品説明文の基本形
