@@ -70,6 +70,14 @@ VCC に追加する URL と、listing 閲覧ページは役割を分けます。
 - listing page を参考ページとして併記する場合も、VCC に追加する URL ではないと分かる形で書く
 - GitHub の listing repo URL は主導線にしない
 
+### listing 更新の流れ
+- package repo が `source.json` の `githubRepos` に登録済みなら、listing repo への commit・変更は不要
+- 新 version は GitHub Release の asset zip から自動取得される
+- ただし listing の再ビルドが必要。方法は次のいずれか：
+  - listing repo に変更を push する（source.json 等の変更がある場合）
+  - GitHub Actions の workflow_dispatch で手動実行する（変更がない場合）
+- Release publish 後、listing の Pages を確認し、反映されていなければ手動 dispatch
+
 ---
 
 ## package 公開の基本
@@ -161,6 +169,13 @@ BOOTH_PACKAGE は最小 4 点を基本形にします。
 BOOTH 配布 zip のファイル名は `{ToolName}_BOOTH_Package_v{version}.zip` を基本形にする。
 - 例: `FlipbookMaterialGenerator_BOOTH_Package_v1.0.0.zip`
 - 例: `SkinnedMeshMirror_BOOTH_Package_v0.1.2.zip`
+
+### BOOTH zip の作成
+BOOTH 配布 zip は Claude Code に依頼して作成する。
+- 入力: repo 内の `BOOTH_PACKAGE/` フォルダ
+- 出力: `Releases/booth/{ToolName}_BOOTH_Package_v{version}.zip`
+- zip 展開直下にファイルが見える形にする（BOOTH_PACKAGE/ フォルダ自体は含めない）
+- .meta ファイルは除外する
 
 ---
 
