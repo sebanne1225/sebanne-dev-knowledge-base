@@ -11,7 +11,7 @@
 
 ```
 Documentation~/notes/
-├── sessions/      ← セッション記録（作業ログ・closeout まとめ）
+├── sessions/      ← 過去のセッション記録（参照用。新規は Notion セッション記録 DB へ）
 ├── technical/     ← 技術メモ（設計判断・実装知見・デバッグ経緯）
 ├── guide-source/  ← PDF 素材（ユーザー向け使い方・操作手順・機能説明）
 └── archive/       ← 整理候補（古い・重複・他に統合済み）
@@ -25,6 +25,7 @@ Documentation~/notes/
 - 作業セッションのログ、closeout まとめ、リリースノート
 - 「いつ何をやったか」の記録。後から経緯を追う時に使う
 - PDF にも技術メモにも直接は使わない
+- ※ 2026-04-08 以降、セッション記録は Notion セッション記録 DB に保存。sessions/ への新規追加は行わない。既存ファイルは参照用に残す
 
 ### technical/
 - 設計判断の経緯、実装知見、デバッグで得た知見
@@ -62,7 +63,7 @@ Documentation~/notes/
 |---|---|
 | ユーザー向けの使い方・操作手順 | guide-source/ |
 | 設計判断・実装知見・デバッグ経緯 | technical/ |
-| 作業ログ・closeout・リリースノート | sessions/ |
+| 作業ログ・closeout・リリースノート | Notion セッション記録 DB |
 | CLAUDE.md に昇格済み・内容が古い | archive/ |
 | 今後も何度も参照する変わりにくい前提 | notes ではなく CLAUDE.md に昇格 |
 
