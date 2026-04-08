@@ -3,13 +3,13 @@
 ## 目的
 スレ終了時に、そのスレで出た内容を
 - knowledge repo に残す候補
-- 各 repo の `CODEX_HANDOFF.md` に残す候補
+- 各 repo の `CLAUDE.md` に残す候補
 - 整理 / 見送り候補
 へ最小で切り分けるためのテンプレ。
 
 ## このテンプレでまだやらないこと
 - AGENTS / config の自動更新
-- `CODEX_HANDOFF.md` の自動更新
+- `CLAUDE.md` の自動更新
 - Skill 実装や config 追加
 - 単発ログの大量保存
 
@@ -18,7 +18,7 @@
 - 単発ログより、今後も再利用する内容を優先する
 - `共通化向き / repo 固有 / 見送り` を分ける
 - 迷うものはまず knowledge repo 候補として短く保持し、AGENTS 追加は保留する
-- `CODEX_HANDOFF.md` 候補は 3〜5 行で短くする
+- `CLAUDE.md` 候補は 3〜5 行で短くする
 
 ## closeout 出力チェックリスト
 
@@ -47,11 +47,11 @@ closeout に入ったら、以下を順番に出し切る。
 - 再利用理由:
 - 今回は草案だけでよいか:
 
-### 2. `CODEX_HANDOFF.md` 候補
+### 2. `CLAUDE.md` 候補
 - repo:
 - 入れる場所:
 - 追記案（3〜5行）:
-- knowledge repo ではなく handoff に寄せる理由:
+- knowledge repo ではなく CLAUDE.md に寄せる理由:
 
 ### 3. 整理 / 統合 / 削除候補
 - 対象:
@@ -64,8 +64,8 @@ closeout に入ったら、以下を順番に出し切る。
 - 次に拾う条件:
 
 ### 5. 次アクション
-- ChatGPT 側:
-- Codex 側:
+- Claude（claude.ai）側:
+- Claude Code 側:
 - 次スレに持ち越すこと:
 
 ---
