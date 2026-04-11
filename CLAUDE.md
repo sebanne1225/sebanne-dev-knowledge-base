@@ -339,7 +339,7 @@ closeout 時に拾いやすくするため、その場で残す。
    4. 「後回し」にした判断を全部 Notion 次フェーズ候補 DB に追加したか
    5. Claude Code の網羅的実装確認を closeout 前に必ず1回実施したか
    6. セッション記録を Notion セッション記録 DB に投入したか
-7. `THREAD_CLOSEOUT_TEMPLATE.md` の「次スレ開始テンプレ」を使って引き継ぎパッケージを作り、次スレの冒頭に貼れる状態にする。Claude Code に対象 repo の `CLAUDE.md` と knowledge base を読ませて整形・補完してもらうと確実
+7. `THREAD_CLOSEOUT_TEMPLATE.md` の「次スレ開始テンプレ」を使って引き継ぎパッケージを作り、次スレの冒頭に貼れる状態にする。Claude Code に対象 repo の `CLAUDE.md` と knowledge base を読ませて整形・補完してもらうと確実。引き継ぎパッケージを出す時は、次スレの冒頭で Claude がどう動くか（Notion を読む、CLAUDE.md を読む、残タスクから始める等）をイメージして構成する。次スレの Claude が迷わず動ける状態を目指す
 8. knowledge base・REPO_INDEX 等のナレッジ修正は closeout 内で全て完了させる。次スレに持ち越さない。引き継ぎパッケージの「前回の closeout 候補の反映」は常に「済み」の状態でスレを閉じる
 9. ナレッジファイル変更後は「変更ファイル一覧」を出す。Claude Code に変更反映を確認させてからスレッドを閉じる。せばんぬがプロジェクト手順欄に差し替えやすいようにファイル一覧を明示する
 
