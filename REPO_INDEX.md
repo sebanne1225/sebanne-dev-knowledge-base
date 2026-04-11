@@ -75,6 +75,14 @@
   - 公開準備、release、listing 反映確認
   - UI 設計パターンの参照（5 セクション構成 / helpBox 枠 / DrawSectionHeader）
 
+### `sebanne1225/afk-changer`
+- 用途:
+  - AFK Changer 本体 repo
+- 見る場面:
+  - NDMF プラグイン実装の参考
+  - AnimatorController の走査・操作パターンの参考（BFS / SubSM 再帰 / content-skeleton 分離）
+  - 公開準備、release、listing 反映確認
+
 ---
 
 ## repo ごとの運用メモ
