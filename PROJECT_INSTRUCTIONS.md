@@ -293,6 +293,7 @@ Phase 3 の全ステップが完了するまでスレを閉じない。
 | セッション記録 | セッション記録の保存先（経緯・後回し・引き継ぎ含む） | bc3d23f7-6f3c-46f0-9795-a68aafc6b7dc |
 
 運用ルール全体は [Notion 運用ガイド](https://www.notion.so/33a61f93d20181e98fb1e8a980da6143) を参照。
+※ Notion MCP ツールは deferred 型のため、使用前に tool_search で schema を読み込む必要がある。
 
 ## ルーティングルール
 
