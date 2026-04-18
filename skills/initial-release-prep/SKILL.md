@@ -129,7 +129,7 @@ commit: version bump を単独で commit + push する。
 
 `BOOTH_PACKAGE/` フォルダから BOOTH 配布 zip を作成する。
 
-- 出力先: `Releases/booth/{ToolName}_BOOTH_Package_v{version}.zip`
+- 出力先: `Releases/booth/{ToolName}/{ToolName}_BOOTH_Package_v{version}.zip`
 - zip 展開直下にファイルが見える形にする（BOOTH_PACKAGE/ フォルダ自体は含めない）
 - .meta ファイルは除外する
 
@@ -162,7 +162,7 @@ commit: version bump を単独で commit + push する。
 ### 10. BOOTH 公開
 - [ ] 商品名の決定
 - [ ] ツール固有タグの決定（共通タグ + MA タグは Skill 内で判断済み）
-- [ ] BOOTH zip アップロード（Releases/booth/ にある zip）
+- [ ] BOOTH zip アップロード（Releases/booth/{ToolName}/ にある zip）
 - [ ] 商品説明文の作成（PUBLIC_RELEASE_GUIDELINES.md「BOOTH 商品説明文の基本形」参照）
 - [ ] 商品画像の準備
 - [ ] 公開
