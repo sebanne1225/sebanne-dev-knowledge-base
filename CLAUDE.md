@@ -169,43 +169,39 @@ plan の範囲内で必要な変更は全て行う。
 ---
 
 ## 4. 標準フォルダ構成
-今後の Unity / VRChat ツール開発では、共通の開発用 Unity プロジェクトを 1 つ使い、ワークスペース直下に `UnityDev`、`PackagesSrc`、`Repos` を置く標準構成で進めます。
+Unity / VRChat ツール開発は、ToolDevWorkspace/ を共有 Unity project の root 兼ワークスペースとして使う。リポジトリは Repos/ 配下、配布物は Releases/ 配下に置く。
 
 ### 標準構成
 ```text
-ToolDevWorkspace/
-├─ UnityDev/
-│  └─ SebanneToolDev/
-│     ├─ Assets/
-│     │  ├─ _Scenes/
-│     │  ├─ _Sandbox/
-│     │  ├─ _TestAvatars/
-│     │  ├─ _SharedDebug/
-│     │  └─ _Temp/
-│     ├─ Packages/
-│     └─ ProjectSettings/
-│
-├─ PackagesSrc/
-│  ├─ com.sebanne.some-tool/
-│  ├─ com.sebanne.another-tool/
-│  └─ ...
+ToolDevWorkspace/          ← 共有 Unity project の root を兼ねる
+├─ Assets/                 ← Unity project (_Scenes / _Sandbox / _TestAvatars 等を適宜配置)
+├─ Library/                ← Unity 生成
+├─ Packages/               ← Unity Package Manager 管理
+├─ ProjectSettings/        ← Unity 生成
+├─ (他 Unity 生成物: Logs/ Temp/ UserSettings/)
 │
 ├─ Repos/
-│  ├─ some-tool/
-│  ├─ another-tool/
+│  ├─ afk-manager/
+│  ├─ flipbook-material-generator/
+│  ├─ sebanne-dev-knowledge-base/
+│  ├─ sebanne-listing/
 │  ├─ sebanne-unity-vrchat-tool-template/
-│  └─ ...
+│  └─ ... (各 package / listing / knowledge base の git repo)
 │
-├─ Releases/
-│  ├─ vpm/
-│  ├─ unitypackage/
-│  └─ booth/
-│
-└─ Docs/
-   ├─ workflow-notes/
-   ├─ screenshots/
-   └─ prompts/
+└─ Releases/
+   └─ booth/
+      ├─ {ToolName}/
+      │  └─ {ToolName}_BOOTH_Package_v{version}.zip
+      └─ ...
 ```
+
+### Releases 配下の方針
+- 配布形式ごと (`booth/`) に分け、その下にツールごとのサブフォルダを切る
+- 過去 version の zip も積んで残す (事実保存のため)
+- サブフォルダ化することでリポごとに隔離し、誤操作を防ぐ
+- 将来 VPM / unitypackage の直接配布を始める場合も同形式で追加する
+  (例: `Releases/vpm/{ToolName}/`, `Releases/unitypackage/{ToolName}/`)
+  現時点では使用していないためフォルダ自体は作らない
 
 ---
 

@@ -126,7 +126,8 @@ BOOTH 配布 zip のファイル名は `{ToolName}_BOOTH_Package_v{version}.zip`
 ### BOOTH zip の作成
 BOOTH 配布 zip は Claude Code に依頼して作成する。
 - 入力: repo 内の `BOOTH_PACKAGE/` フォルダ
-- 出力: `Releases/booth/{ToolName}_BOOTH_Package_v{version}.zip`
+- 出力: `Releases/booth/{ToolName}/{ToolName}_BOOTH_Package_v{version}.zip`
+- ツールごとにサブフォルダで分離する（過去 version も積んで残すため、リポごとに隔離して誤操作を防ぐため）
 - zip 展開直下にファイルが見える形にする（BOOTH_PACKAGE/ フォルダ自体は含めない）
 - .meta ファイルは除外する
 
@@ -223,7 +224,7 @@ patch のたびに毎回 BOOTH を更新する必要はない。VPM が主導線
 判断の境界線: 「BOOTH の商品説明文や同梱テキストを書き換える理由があるかどうか」。
 
 BOOTH を更新する場合:
-- BOOTH zip 再作成（`Releases/booth/` に出力）
+- BOOTH zip 再作成（`Releases/booth/{ToolName}/` に出力）
 - 商品ページの更新履歴に追記
 - 必要に応じて商品説明文を更新
 
